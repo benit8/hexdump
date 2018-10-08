@@ -65,20 +65,17 @@ static void dump_row(FILE *stream, size_t row, uint8_t *data, size_t length)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+
 void hexdump_to(FILE *stream, void *mem, size_t length)
 {
 	uint8_t *data = (uint8_t *)mem;
-	size_t safe_length = length;
 	size_t row = 0;
 
 #ifdef HEXDUMP_SKIP_DUPLICATES
 	need_reset = true;
 #endif
 
-	while (safe_length % HEXDUMP_ROW_LENGTH != 0)
-		--safe_length;
-
-	while (row < safe_length) {
+	while (length > HEXDUMP_ROW_LENGTH) {
 		dump_row(stream, row, &data[row], HEXDUMP_ROW_LENGTH);
 		row += HEXDUMP_ROW_LENGTH;
 		length -= HEXDUMP_ROW_LENGTH;

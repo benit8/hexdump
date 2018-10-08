@@ -63,6 +63,8 @@ static void dump_row(FILE *stream, size_t row, uint8_t *data, size_t length)
 	fprintf(stream, "|\n");
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
 void hexdump_to(FILE *stream, void *mem, size_t length)
 {
 	uint8_t *data = (uint8_t *)mem;

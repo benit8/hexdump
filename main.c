@@ -5,6 +5,7 @@
 ** Example main function
 */
 
+#include <stdlib.h>
 #include "hexdump.h"
 
 int main(int ac, char *av[])
